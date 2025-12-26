@@ -1,6 +1,11 @@
 <?php
 require('data.php');
 require('functions.php');
+
+require_once __DIR__ . "/../src/Api.php";
+
+$api = new Api();
+
 $page = array(
     'title' => $data['name']." Free Anime Streaming Homepage",
     'description' => "Watch your favorite anime online in Dub or Sub format without registration on ".$data['domain']." fastest Streaming server NOW.",
@@ -17,14 +22,9 @@ $page = array(
 $animes = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=new&type=tv&key=deadtoonszylith"); // Latest Episode
 $new_animes = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?key=deadtoonszylith");
 $movies = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?type=movie&sort=new&key=deadtoonszylith"); // anime("Movie");
-// print_r($new_animes);
-// $daily = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=today&limit=10&key=deadtoonszylith"); // anime("today");
-// $weekly = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=week&limit=10&key=deadtoonszylith");// anime("weekly");
-// $monthly = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=month&limit=10&key=deadtoonszylith"); //anime("monthly");
 
-$daily = $animes;
-$weekly = $animes;
-$monthly = $animes;
+$daily = $api->popularToday();
+$weekly = $api->popularWeek();
 
 ?>
 <!DOCTYPE html>

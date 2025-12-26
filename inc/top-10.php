@@ -1,7 +1,12 @@
 <?php
-// $daily = anime($pdo, "today");
-// $weekly = anime($pdo, "weekly");
-// $monthly = anime($pdo, "monthly");
+
+require_once __DIR__ . "/../src/Api.php";
+
+$api = new Api();
+
+$today = $api->popularToday();
+$weekly = $api->popularWeek();
+$monthly = $api->popularMonth();
 
 ?>
 <section class="block_area block_area_sidebar block_area-realtime">

@@ -52,11 +52,6 @@ if ($filter == "movie") {
 
 }
 
-$daily = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=today&limit=10&key=deadtoonszylith"); // anime("today");
-$weekly = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=week&limit=10&key=deadtoonszylith");// anime("weekly");
-$monthly = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=month&limit=10&key=deadtoonszylith"); //anime("monthly");
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -23,10 +23,6 @@ $currentPage = ((isset($_GET['page'])) ? $_GET['page'] : 1 );
 $offset = ($currentPage - 1) * $limit;
 $animes = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?alpha=$alpha&count=true&limit=$limit&offset=$offset&key=deadtoonszylith");
 
-$daily = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=today&limit=10&key=deadtoonszylith"); // anime("today");
-$weekly = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=week&limit=10&key=deadtoonszylith");// anime("weekly");
-$monthly = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=month&limit=10&key=deadtoonszylith"); //anime("monthly");
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
