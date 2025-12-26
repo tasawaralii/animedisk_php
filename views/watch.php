@@ -233,7 +233,7 @@ $page = array(
     min-width: 80px;
     background-color: #ffbade;
     color: #000;
-    border: none!important;" class="btn" href="'. $archiveDomain . '/movie/' . $a['slug'] . '">Download</a>
+    border: none!important;" class="btn" href="' . $archiveDomain . '/movie/' . $a['slug'] . '">Download</a>
                 </div>';
                                                 } else {
                                                     echo '<div style="    float: left;

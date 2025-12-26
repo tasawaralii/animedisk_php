@@ -54,22 +54,63 @@ class Utils
 
     public static function generatePagination(int $currentPage, int $totalPages, string $baseUrl = ""): string
     {
+        // No pagination needed if only one page
+        if ($totalPages <= 1) {
+            return '';
+        }
+
+        // Determine the query separator based on whether baseUrl already has query params
+        $sep = (strpos($baseUrl, '?') !== false) ? '&' : '?';
+
         $paginationHtml = '<div class="pre-pagination mt-5 mb-5">';
         $paginationHtml .= '<nav aria-label="Page navigation">';
         $paginationHtml .= '<ul class="pagination pagination-lg justify-content-center">';
 
+        // Previous link
         if ($currentPage > 1) {
-            $paginationHtml .= '<li class="page-item"><a title="Previous" class="page-link" href="' . $baseUrl . '?page=' . ($currentPage - 1) . '">&lsaquo;</a></li>';
+            $paginationHtml .= '<li class="page-item"><a title="Previous" class="page-link" href="' . $baseUrl . $sep . 'page=' . ($currentPage - 1) . '">&lsaquo;</a></li>';
         }
 
-        for ($i = 1; $i <= $totalPages; $i++) {
-            $activeClass = ($i == $currentPage) ? 'active' : '';
-            $paginationHtml .= '<li class="page-item ' . $activeClass . '"><a class="page-link" href="' . $baseUrl . '?page=' . $i . '">' . $i . '</a></li>';
+        // Windowed page links
+        $window = 3; // total number of page buttons to display (excluding first/last/prev/next)
+        $half = intdiv($window, 2);
+        $start = max(1, $currentPage - $half);
+        $end = min($totalPages, $currentPage + $half);
+
+        // Adjust when near the start/end to keep window size consistent
+        if ($end - $start + 1 < $window) {
+            if ($start === 1) {
+                $end = min($totalPages, $start + $window - 1);
+            } elseif ($end === $totalPages) {
+                $start = max(1, $end - $window + 1);
+            }
         }
 
+        // Show first page and ellipsis if needed
+        if ($start > 1) {
+            $paginationHtml .= '<li class="page-item"><a class="page-link" href="' . $baseUrl . $sep . 'page=1">1</a></li>';
+            if ($start > 2) {
+                $paginationHtml .= '<li class="page-item disabled"><span class="page-link">&hellip;</span></li>';
+            }
+        }
+
+        for ($i = $start; $i <= $end; $i++) {
+            $activeClass = ($i === $currentPage) ? 'active' : '';
+            $paginationHtml .= '<li class="page-item ' . $activeClass . '"><a class="page-link" href="' . $baseUrl . $sep . 'page=' . $i . '">' . $i . '</a></li>';
+        }
+
+        // Show ellipsis and last page if needed
+        if ($end < $totalPages) {
+            if ($end < $totalPages - 1) {
+                $paginationHtml .= '<li class="page-item disabled"><span class="page-link">&hellip;</span></li>';
+            }
+            $paginationHtml .= '<li class="page-item"><a class="page-link" href="' . $baseUrl . $sep . 'page=' . $totalPages . '">' . $totalPages . '</a></li>';
+        }
+
+        // Next and Last links
         if ($currentPage < $totalPages) {
-            $paginationHtml .= '<li class="page-item"><a title="Next" class="page-link" href="' . $baseUrl . '?page=' . ($currentPage + 1) . '">&rsaquo;</a></li>';
-            $paginationHtml .= '<li class="page-item"><a title="Last" class="page-link" href="?page=' . $totalPages . '">&raquo;</a></li>';
+            $paginationHtml .= '<li class="page-item"><a title="Next" class="page-link" href="' . $baseUrl . $sep . 'page=' . ($currentPage + 1) . '">&rsaquo;</a></li>';
+            $paginationHtml .= '<li class="page-item"><a title="Last" class="page-link" href="' . $baseUrl . $sep . 'page=' . $totalPages . '">&raquo;</a></li>';
         }
 
         $paginationHtml .= '</ul>';

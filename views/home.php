@@ -338,7 +338,8 @@ $weekly = $api->popularWeek();
                                                     <div class="film-title dynamic-name"><?php echo $a['anime_name'] ?>
                                                     </div>
                                                 </div>
-                                                <a href="/<?php echo $a['slug'] . "-" . $a['anime_id'] ?>" class="film-poster">
+                                                <a href="/<?php echo $a['slug'] . "-" . $a['anime_id'] ?>"
+                                                    class="film-poster">
                                                     <img data-src="<?php echo img($a, "poster", "low") ?>"
                                                         class="film-poster-img lazyload"
                                                         title="<?php echo $a['anime_name'] ?>"
@@ -392,7 +393,7 @@ $weekly = $api->popularWeek();
                                     ?>
 
 
-                                    <a href="/recently-updated" class="btn btn-sm w-100"
+                                    <a href="/list/recently-updated" class="btn btn-sm w-100"
                                         style="background-color: #ffbade;margin-top: 20px;">View More</a>
 
                                 </div>
@@ -409,7 +410,7 @@ $weekly = $api->popularWeek();
                             <div class="float-left bah-heading mr-4">
                                 <h2 class="cat-heading">New Movies</h2>
                             </div>
-                            <div class="float-right viewmore"><a class="btn" href="/movie">View more<i
+                            <div class="float-right viewmore"><a class="btn" href="/list/movie">View more<i
                                         class="fas fa-angle-right ml-2"></i></a></div>
                             <div class="clearfix"></div>
                         </div>
@@ -424,7 +425,7 @@ $weekly = $api->popularWeek();
                                     }
                                     ?>
 
-                                    <a href="/movie" class="btn btn-sm w-100"
+                                    <a href="/list/movie" class="btn btn-sm w-100"
                                         style="background-color: #ffbade;margin-top: 20px;">View More</a>
                                 </div>
                                 <div class="clearfix"></div>

@@ -2,17 +2,17 @@
 
 // https://animedisk.in/shortner?solved=true&hash=b4b3b003xd34dt00n
 
-if(isset($_GET['solved']) && $_GET['solved'] == "true" && $_GET['hash'] == "b4b3b003xd34dt00n") {
-    
-    if(!isset($_COOKIE['fallback'])) {
+if (isset($_GET['solved']) && $_GET['solved'] == "true" && $_GET['hash'] == "b4b3b003xd34dt00n") {
+
+    if (!isset($_COOKIE['fallback'])) {
         header("Location: /home");
         exit;
     }
 
-    setcookie("dst",base64_encode(time() + 25 * 60 * 60),time() + 30 * 24 * 60 * 60,"/");
+    setcookie("dst", base64_encode(time() + 25 * 60 * 60), time() + 30 * 24 * 60 * 60, "/");
     $fallback = $_COOKIE['fallback'];
-    setcookie("fallback","",time() - 24 * 60 * 60,"/");
-    header("Location: ".$fallback);
+    setcookie("fallback", "", time() - 24 * 60 * 60, "/");
+    header("Location: " . $fallback);
     exit;
 }
 
@@ -59,23 +59,23 @@ if(isset($_GET['solved']) && $_GET['solved'] == "true" && $_GET['hash'] == "b4b3
     <link rel="stylesheet" href="https://animedisk.in/css/styles.min.css?v=1.0">
 </head>
 <style>
-.video-container {
-    position: relative;
-    aspect-ratio: 9 / 16;
-    max-width: 300px;
-    margin: 0px auto;
-    overflow: hidden;
-    border: 2px solid rgb(148, 148, 148);
-    border-radius: 15px;
-}
+    .video-container {
+        position: relative;
+        aspect-ratio: 9 / 16;
+        max-width: 300px;
+        margin: 0px auto;
+        overflow: hidden;
+        border: 2px solid rgb(148, 148, 148);
+        border-radius: 15px;
+    }
 
-.video-container iframe {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-}
+    .video-container iframe {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+    }
 </style>
 
 <body>
@@ -87,14 +87,17 @@ if(isset($_GET['solved']) && $_GET['solved'] == "true" && $_GET['hash'] == "b4b3
                     <br>
                     <div class="c4-small">You Need to Solve 1 Link Shortner per 24 hours</div>
                     <div class="c4-button">
-                        <a href="https://krownlinks.me/CPdxsO" class="btn btn-radius btn-focus mt-3 mb-3">Solve (Krown) V1</a>
+                        <a href="https://krownlinks.me/CPdxsO" class="btn btn-radius btn-focus mt-3 mb-3">Solve (Krown)
+                            V1</a>
                         <br>
                         <a href="https://cuty.io/8f9Kq" class="btn btn-radius btn-focus mt-3 mb-3">Solve (Cutty) V2</a>
                         <br>
-                        <a href="https://hyp.sh/hMsnKEKV" class="btn btn-radius btn-focus mt-3 mb-3">Solve (Hyper) V3</a>
+                        <a href="https://hyp.sh/hMsnKEKV" class="btn btn-radius btn-focus mt-3 mb-3">Solve (Hyper)
+                            V3</a>
                     </div>
                     <div>
-                        <a class="btn bg-primary btn-radius mt-3 mb-3" href="https://telegram.dog/deadstream_anime"><i class="fa fa-telegram" aria-hidden="true"></i>Report Problem</a>
+                        <a class="btn bg-primary btn-radius mt-3 mb-3" href="https://telegram.dog/deadstream_anime"><i
+                                class="fa fa-telegram" aria-hidden="true"></i>Report Problem</a>
                     </div>
                     <strong>How to Solve Shortner</strong>
                     <br><br>
