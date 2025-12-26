@@ -1,6 +1,5 @@
 <?php
-require('data.php');
-require('functions.php');
+require __DIR__ . '/_bootstrap.php';
 $genre = $params['g'];
 $sg = capitalize($genre);
 $page = array(

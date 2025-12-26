@@ -11,7 +11,7 @@ if (!is_numeric($id)) {
     exit;
 }
 
-require('functions.php');
+require __DIR__ . '/_bootstrap.php';
 
 if (isset($_GET['type']) && $_GET['type'] == "movie") {
 
@@ -81,7 +81,6 @@ if (!isset($_GET['type'])) {
     $servers = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/movie.php?dumyid=$dumyId&order=desc&key=deadtoonszylith");
 }
 
-require('data.php');
 
 $page = array(
     'title' => "Watch " . $a['anime_name'] . " Hindi Sub/Dub online Free on " . $data['name'],

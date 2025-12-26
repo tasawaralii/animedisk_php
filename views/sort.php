@@ -1,5 +1,4 @@
 <?php
-require('data.php');
 $order = str_replace("-", " ", $params['order']);
 $page = array(
     'title' => "Watch " . $order . " Anime Hindi DUBBED Online",
@@ -14,7 +13,7 @@ $page = array(
     ),
     'header-class' => 'header-home',
 );
-require('functions.php');
+require __DIR__ . '/_bootstrap.php';
 $limit = 22;
 $currentPage = (isset($_GET['page'])) ? $_GET['page'] : 1;
 $offset = ($currentPage - 1) * $limit;

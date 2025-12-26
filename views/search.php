@@ -1,17 +1,15 @@
 <?php
+require __DIR__ . '/_bootstrap.php';
 if(isset($_GET['keyword']) && $_GET['keyword'] != '') {
     $keyword = urlencode(trim($_GET['keyword']));
     
     
-    
-    require('functions.php');
     $search = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/search.php?keyword=$keyword&key=deadtoonszylith");
     // print_r($search);
 } else {
     require('error.php');
     exit;
 }
-require('data.php');
 $page = array(
     'title' => "Watch Anime Online, Free Anime Streaming Online on ".$data['domain']." Anime Website",
     'description' => $data['name']." is a Free anime streaming website which you can watch English Subbed and Dubbed Anime online with No Account and Daily update. WATCH NOW!",

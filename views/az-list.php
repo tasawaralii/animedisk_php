@@ -1,6 +1,5 @@
 <?php
-require('data.php');
-require('functions.php');
+require __DIR__ . '/_bootstrap.php';
 
 $alpha = strtoupper($params['a']);
 

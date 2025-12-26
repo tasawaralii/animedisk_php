@@ -32,7 +32,7 @@ $monthly = $api->popularMonth();
                             
                             <?php
                             $i = 0;
-                            foreach($daily as $a) {
+                            foreach($today as $a) {
                             $i++;
                             echo top($a, $i);
                             }

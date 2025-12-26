@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/_bootstrap.php';
 $anime = $params['anime'];
 $id = $params['id'];
 
@@ -6,7 +7,6 @@ if (!is_numeric($id)) {
     require('error.php');
     exit;
 } else {
-    require('functions.php');
     $post = single_anime($anime, $id, "info");
     if (!$post) {
         require('error.php');
@@ -18,9 +18,7 @@ if (!is_numeric($id)) {
         exit;
     }
 }
-require('data.php');
 $a = $post;
-require('data.php');
 $page = array(
     'title' => "Watch " . $a['anime_name'] . " Hindi Sub/Dub online Free on " . $data['name'],
     'description' => "Best site to watch " . $a['anime_name'] . " Hindi Sub/Dub online Free and download " . $a['anime_name'] . " Hindi Sub/Dub anime.",

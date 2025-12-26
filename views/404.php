@@ -1,6 +1,6 @@
 <?php
 http_response_code(404);
-require('data.php');
+require __DIR__ . '/_bootstrap.php';
 $page = array(
     'title' => $data['name']." Free Anime Streaming Homepage",
     'description' => "Watch your favorite anime online in Dub or Sub format without registration on ".$data['domain']." fastest Streaming server NOW.",
