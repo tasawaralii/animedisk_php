@@ -4,7 +4,7 @@ if (isset($_GET['keyword']) && $_GET['keyword'] != '') {
     $keyword = urlencode(trim($_GET['keyword']));
 
 
-    $search = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/search.php?keyword=$keyword&key=deadtoonszylith");
+    $search = fetchRemoteData(API_DOMAIN . "/api/anime/search.php?keyword=$keyword&key=deadtoonszylith");
     // print_r($search);
 } else {
     require('error.php');

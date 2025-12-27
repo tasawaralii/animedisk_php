@@ -23,31 +23,31 @@ $filter = $params['order'];
 
 if ($filter == "movie") {
 
-    $animes = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=new&type=movie&limit=22&count=true&offset=$offset&key=deadtoonszylith");
+    $animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=new&type=movie&limit=22&count=true&offset=$offset&key=deadtoonszylith");
 
 } else if ($filter == "recently-updated") {
 
-    $animes = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=new&type=tv&limit=22&count=true&key=deadtoonszylith");
+    $animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=new&type=tv&limit=22&count=true&key=deadtoonszylith");
 
 } else if ($filter == "top-airing") {
 
-    $animes = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=popular&type=tv&completed=false&limit=22&count=true&key=deadtoonszylith");
+    $animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=popular&type=tv&completed=false&limit=22&count=true&key=deadtoonszylith");
 
 } else if ($filter == "most-popular") {
 
-    $animes = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=popular&limit=22&count=true&key=deadtoonszylith");
+    $animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=popular&limit=22&count=true&key=deadtoonszylith");
 
 } else if ($filter == "completed") {
 
-    $animes = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=new&type=tv&completed=true&limit=22&count=true&key=deadtoonszylith");
+    $animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=new&type=tv&completed=true&limit=22&count=true&key=deadtoonszylith");
 
 } else if ($filter == "tv") {
 
-    $animes = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=new&type=tv&limit=22&count=true&key=deadtoonszylith");
+    $animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=new&type=tv&limit=22&count=true&key=deadtoonszylith");
 
 } else {
 
-    $animes = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=new&limit=22&count=true&key=deadtoonszylith");
+    $animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=new&limit=22&count=true&key=deadtoonszylith");
 
 }
 

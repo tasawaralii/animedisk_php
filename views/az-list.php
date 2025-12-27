@@ -20,7 +20,7 @@ $page = array(
 $limit = 16;
 $currentPage = ((isset($_GET['page'])) ? $_GET['page'] : 1 );
 $offset = ($currentPage - 1) * $limit;
-$animes = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?alpha=$alpha&count=true&limit=$limit&offset=$offset&key=deadtoonszylith");
+$animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?alpha=$alpha&count=true&limit=$limit&offset=$offset&key=deadtoonszylith");
 
 ?>
 <!DOCTYPE html>

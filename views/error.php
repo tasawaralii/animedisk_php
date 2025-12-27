@@ -25,7 +25,7 @@ $page = array(
         <div class="clearfix"></div>
         <div class="container mt-5 mb-5">
             <div class="alert alert-danger" role="alert">
-                Sorry, something went wrong. Please try again later.
+                <?= $errorMessage ?? "Sorry, something went wrong. Please try again later." ?>
             </div>
             <div class="text-center">
                 <a href="/" class="btn btn-primary">Go to Home</a>

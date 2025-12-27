@@ -33,8 +33,8 @@ $page = array(
     'header-class' => '',
 );
 
-$popular = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=popular&limit=10&key=deadtoonszylith");
-$recommended = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=random&limit=24&key=deadtoonszylith");// anime($pdo, "Random", $limit = 12);
+$popular = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=popular&limit=10&key=deadtoonszylith");
+$recommended = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=random&limit=24&key=deadtoonszylith");// anime($pdo, "Random", $limit = 12);
 ?>
 <!DOCTYPE html>
 <html lang="en">

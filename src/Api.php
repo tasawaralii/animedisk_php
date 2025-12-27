@@ -1,5 +1,4 @@
 <?php
-
 class Api
 {
     private function getPopular($interval)
@@ -34,7 +33,7 @@ class Api
             }
         }
 
-        $url = "https://dbase.deaddrive.icu/api/anime/listanime.php?sort=$time&limit=10&key=deadtoonszylith";
+        $url = API_DOMAIN . "/api/anime/listanime.php?sort=$time&limit=10&key=deadtoonszylith";
 
         $data = @file_get_contents($url);
         if ($data !== false) {

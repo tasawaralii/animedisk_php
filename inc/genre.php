@@ -1,6 +1,6 @@
 <?php
 
-$allgenres = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/genre.php?key=deadtoonszylith");
+$allgenres = fetchRemoteData(API_DOMAIN . "/api/anime/genre.php?key=deadtoonszylith");
 
 ?>
                 <section class="block_area block_area_sidebar block_area-genres">

@@ -17,7 +17,7 @@ if (isset($_GET['type']) && $_GET['type'] == "movie") {
 
     $dumyId = $id;
 
-    $post = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/anime.php?dummyid=$dumyId&key=deadtoonszylith");
+    $post = fetchRemoteData(API_DOMAIN . "/api/anime/anime.php?dummyid=$dumyId&key=deadtoonszylith");
 
 
 
@@ -25,7 +25,7 @@ if (isset($_GET['type']) && $_GET['type'] == "movie") {
 
     $mySeasonId = $id;
 
-    $post = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/anime.php?seasonid=$mySeasonId&key=deadtoonszylith");
+    $post = fetchRemoteData(API_DOMAIN . "/api/anime/anime.php?seasonid=$mySeasonId&key=deadtoonszylith");
 
 }
 
@@ -50,7 +50,7 @@ if (!isset($_GET['type'])) {
 
     if (!isset($_GET['ep'])) {
 
-        $allEpisodes = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/episodes.php?seasonid=$mySeasonId&onlyhindi=0&available=true&key=deadtoonszylith");
+        $allEpisodes = fetchRemoteData(API_DOMAIN . "/api/anime/episodes.php?seasonid=$mySeasonId&onlyhindi=0&available=true&key=deadtoonszylith");
 
 
         $firstEpisode = $allEpisodes[0];
@@ -61,24 +61,30 @@ if (!isset($_GET['type'])) {
 
         $episodeId = $_GET['ep'];
 
-        $episodeApiUrl = "https://dbase.deaddrive.icu/api/anime/episode.php?animeid=$anime_id&seasonid=$mySeasonId&epid=$episodeId&links=true&limit=1&key=deadtoonszylith";
+        $episodeApiUrl = API_DOMAIN . "/api/anime/episode.php?animeid=$anime_id&seasonid=$mySeasonId&episodeid=$episodeId&links=true&limit=1&key=deadtoonszylith";
 
         $episode = fetchRemoteData($episodeApiUrl);
 
-        $allEpisodes = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/episodes.php?seasonid=$mySeasonId&onlyhindi=0&available=true&key=deadtoonszylith");
+        if(isset($episode['error'])) {
+            $errorMessage = $episode['error'];
+            require('error.php');
+            exit;
+        }
 
-        $seasonInfo = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/my-seasons.php?seasonid=$mySeasonId&key=deadtoonszylith");
+        $allEpisodes = fetchRemoteData(API_DOMAIN . "/api/anime/episodes.php?seasonid=$mySeasonId&onlyhindi=0&available=true&key=deadtoonszylith");
+
+        $seasonInfo = fetchRemoteData(API_DOMAIN . "/api/anime/my-seasons.php?seasonid=$mySeasonId&key=deadtoonszylith");
         $seasonInfo = $seasonInfo[0];
 
         // print_r($episodeApiUrl);
 
-        $epInfo = $episode['detail'][0];
+        $epInfo = $episode['detail'];
         $servers = $episode['links'];
         // if(!$servers)
         //     header("Location: /watch/".$a['slug']."-".$a['my_season_id']."?ep=".$a['episode_id']);
     }
 } else {
-    $servers = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/movie.php?dumyid=$dumyId&order=desc&key=deadtoonszylith");
+    $servers = fetchRemoteData(API_DOMAIN . "/api/anime/movie.php?dumyid=$dumyId&order=desc&key=deadtoonszylith");
 }
 
 
@@ -196,12 +202,18 @@ $page = array(
 
                                                     foreach ($servers as $s) {
                                                         echo '<div class="item" data-embed="https://deaddrive.shop/embed/' . $s['uid'] . '">
-                        <a style = "margin-top:4px" class="btn">' . ($movie_single && $s['Hindi_Only'] == 1 ? 'Hindi Only' : $s['quality']) . '</a>
-                    </div>';
+                                                        <a style = "margin-top:4px" class="btn">' . ($movie_single && $s['Hindi_Only'] == 1 ? 'Hindi Only' : $s['quality']) . '</a>
+                                                        </div>';
                                                     }
                                                 } else {
 
                                                     $deaddrive = $servers['deaddrive']['embed'];
+
+
+                                                    if($epInfo['player_link']) {
+                                                        $blazePlayer = $epInfo['player_link'];
+                                                        echo '<div class="item" data-embed="' . $blazePlayer . '"><a style = "margin-top:4px" class="btn">Blaze</a></div>';
+                                                    }
 
                                                     echo '<div class="item" data-embed="' . $deaddrive . '"><a style = "margin-top:4px" class="btn">DeadDrive</a></div>';
 

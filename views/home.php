@@ -18,9 +18,9 @@ $page = array(
     ),
     'header-class' => 'header-home',
 );
-$animes = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?sort=new&type=tv&key=deadtoonszylith"); // Latest Episode
-$new_animes = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?key=deadtoonszylith");
-$movies = fetchRemoteData("https://dbase.deaddrive.icu/api/anime/listanime.php?type=movie&sort=new&key=deadtoonszylith"); // anime("Movie");
+$animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=new&type=tv&key=deadtoonszylith"); // Latest Episode
+$new_animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?key=deadtoonszylith");
+$movies = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?type=movie&sort=new&key=deadtoonszylith"); // anime("Movie");
 
 $daily = $api->popularToday();
 $weekly = $api->popularWeek();
