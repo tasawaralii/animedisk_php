@@ -1,5 +1,9 @@
 <?php
 require __DIR__ . '/_bootstrap.php';
+
+require_once __DIR__ . "/../src/Api.php";
+$api = new Api();
+
 $anime = $params['anime'];
 $id = $params['id'];
 
@@ -33,15 +37,15 @@ $page = array(
     'header-class' => '',
 );
 
-$popular = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=popular&limit=10&key=deadtoonszylith");
-$recommended = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=random&limit=24&key=deadtoonszylith");// anime($pdo, "Random", $limit = 12);
+$popular = $api->getList(['sort' => 'popular', 'limit' => 10]);
+$recommended = $api->getList(['sort' => 'random', 'limit' => 24]);// anime($pdo, "Random", $limit = 12);
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php require('inc/head.php'); ?>
 
 <body>
-    <?php require('inc/sidebar.html'); ?>
+    <?php require('inc/sidebar.php'); ?>
     <div id="wrapper" data-id="15559" data-page="detail">
         <?php require('inc/header.php'); ?>
         <div class="clearfix"></div>

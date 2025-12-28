@@ -1,9 +1,5 @@
 <?php
 
-require_once __DIR__ . "/../src/Api.php";
-
-$api = new Api();
-
 $today = $api->popularToday();
 $weekly = $api->popularWeek();
 $monthly = $api->popularMonth();

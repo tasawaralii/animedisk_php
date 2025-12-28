@@ -18,9 +18,9 @@ $page = array(
     ),
     'header-class' => 'header-home',
 );
-$animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=new&type=tv&key=deadtoonszylith"); // Latest Episode
-$new_animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?key=deadtoonszylith");
-$movies = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?type=movie&sort=new&key=deadtoonszylith"); // anime("Movie");
+$animes = $api->getLatestEpisodes();
+$new_animes = $api->getRecentlyAdded();
+$movies = $api->getNewMovies();
 
 $daily = $api->popularToday();
 $weekly = $api->popularWeek();
@@ -31,7 +31,7 @@ $weekly = $api->popularWeek();
 <?php require('inc/head.php'); ?>
 
 <body>
-    <?php require('inc/sidebar.html'); ?>
+    <?php require('inc/sidebar.php'); ?>
     <div id="wrapper">
         <?php require('inc/header.php'); ?>
         <!--Begin: Slider-->

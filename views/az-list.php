@@ -1,6 +1,9 @@
 <?php
 require __DIR__ . '/_bootstrap.php';
 
+require_once __DIR__ . "/../src/Api.php";
+$api = new Api();
+
 $alpha = strtoupper($params['a']);
 
 $page = array(
@@ -20,14 +23,14 @@ $page = array(
 $limit = 16;
 $currentPage = ((isset($_GET['page'])) ? $_GET['page'] : 1 );
 $offset = ($currentPage - 1) * $limit;
-$animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?alpha=$alpha&count=true&limit=$limit&offset=$offset&key=deadtoonszylith");
+$animes = $api->getByAlpha($alpha, $limit, $offset);
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <?php require('inc/head.php') ?>
 <body>
-<?php require('inc/sidebar.html') ?>
+<?php require('inc/sidebar.php') ?>
 
 <div id="wrapper">
     <?php require('inc/header.php') ?>

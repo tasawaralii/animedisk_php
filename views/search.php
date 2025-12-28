@@ -1,10 +1,13 @@
 <?php
 require __DIR__ . '/_bootstrap.php';
+
+require_once __DIR__ . "/../src/Api.php";
+$api = new Api();
+
 if (isset($_GET['keyword']) && $_GET['keyword'] != '') {
     $keyword = urlencode(trim($_GET['keyword']));
 
-
-    $search = fetchRemoteData(API_DOMAIN . "/api/anime/search.php?keyword=$keyword&key=deadtoonszylith");
+    $search = $api->searchAnime($keyword);
     // print_r($search);
 } else {
     require('error.php');
@@ -31,7 +34,7 @@ $page = array(
 <?php require('inc/head.php'); ?>
 
 <body>
-    <?php require('inc/sidebar.html'); ?>
+    <?php require('inc/sidebar.php'); ?>
     <div id="wrapper">
         <?php require('inc/header.php') ?>
         <div class="clearfix"></div>

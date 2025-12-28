@@ -1,5 +1,9 @@
 <?php
 require __DIR__ . '/_bootstrap.php';
+
+require_once __DIR__ . "/../src/Api.php";
+$api = new Api();
+
 $genre = $params['g'];
 $sg = capitalize($genre);
 $page = array(
@@ -18,7 +22,7 @@ $page = array(
 $limit = 16;
 $currentPage = ((isset($_GET['page'])) ? $_GET['page'] : 1);
 $offset = ($currentPage - 1) * $limit;
-$animes = fetchRemoteData(API_DOMAIN . "/api/anime/genre.php?genre=$genre&count=true&limit=$limit&offset=$offset&key=deadtoonszylith");
+$animes = $api->getByGenre($genre, $limit, $offset);
 if (!$animes['animes']) {
     require('error.php');
     exit;
@@ -30,7 +34,7 @@ if (!$animes['animes']) {
 <?php require('inc/head.php') ?>
 
 <body>
-    <?php require('inc/sidebar.html') ?>
+    <?php require('inc/sidebar.php') ?>
 
     <div id="wrapper">
         <?php require('inc/header.php') ?>

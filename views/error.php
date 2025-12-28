@@ -19,7 +19,7 @@ $page = array(
     <?php require('inc/head.php'); ?>
 </head>
 <body>
-    <?php require('inc/sidebar.html'); ?>
+    <?php require('inc/sidebar.php'); ?>
     <div id="wrapper">
         <?php require('inc/header.php'); ?>
         <div class="clearfix"></div>

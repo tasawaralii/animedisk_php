@@ -13,11 +13,14 @@ if (!is_numeric($id)) {
 
 require __DIR__ . '/_bootstrap.php';
 
+require_once __DIR__ . "/../src/Api.php";
+$api = new Api();
+
 if (isset($_GET['type']) && $_GET['type'] == "movie") {
 
     $dumyId = $id;
 
-    $post = fetchRemoteData(API_DOMAIN . "/api/anime/anime.php?dummyid=$dumyId&key=deadtoonszylith");
+    $post = $api->getAnimeByDummyId($dumyId);
 
 
 
@@ -25,7 +28,7 @@ if (isset($_GET['type']) && $_GET['type'] == "movie") {
 
     $mySeasonId = $id;
 
-    $post = fetchRemoteData(API_DOMAIN . "/api/anime/anime.php?seasonid=$mySeasonId&key=deadtoonszylith");
+    $post = $api->getAnimeBySeasonId($mySeasonId);
 
 }
 
@@ -50,7 +53,7 @@ if (!isset($_GET['type'])) {
 
     if (!isset($_GET['ep'])) {
 
-        $allEpisodes = fetchRemoteData(API_DOMAIN . "/api/anime/episodes.php?seasonid=$mySeasonId&onlyhindi=0&available=true&key=deadtoonszylith");
+        $allEpisodes = $api->getEpisodes($mySeasonId);
 
 
         $firstEpisode = $allEpisodes[0];
@@ -63,7 +66,7 @@ if (!isset($_GET['type'])) {
 
         $episodeApiUrl = API_DOMAIN . "/api/anime/episode.php?animeid=$anime_id&seasonid=$mySeasonId&episodeid=$episodeId&links=true&limit=1&key=deadtoonszylith";
 
-        $episode = fetchRemoteData($episodeApiUrl);
+        $episode = $api->getEpisodeByUrl($episodeApiUrl);
 
         if(isset($episode['error'])) {
             $errorMessage = $episode['error'];
@@ -71,9 +74,9 @@ if (!isset($_GET['type'])) {
             exit;
         }
 
-        $allEpisodes = fetchRemoteData(API_DOMAIN . "/api/anime/episodes.php?seasonid=$mySeasonId&onlyhindi=0&available=true&key=deadtoonszylith");
+        $allEpisodes = $api->getEpisodes($mySeasonId);
 
-        $seasonInfo = fetchRemoteData(API_DOMAIN . "/api/anime/my-seasons.php?seasonid=$mySeasonId&key=deadtoonszylith");
+        $seasonInfo = $api->getSeasonInfo($mySeasonId);
         $seasonInfo = $seasonInfo[0];
 
         // print_r($episodeApiUrl);
@@ -84,7 +87,7 @@ if (!isset($_GET['type'])) {
         //     header("Location: /watch/".$a['slug']."-".$a['my_season_id']."?ep=".$a['episode_id']);
     }
 } else {
-    $servers = fetchRemoteData(API_DOMAIN . "/api/anime/movie.php?dumyid=$dumyId&order=desc&key=deadtoonszylith");
+    $servers = $api->getMovieServers($dumyId);
 }
 
 
@@ -112,7 +115,7 @@ $page = array(
     <?php require('inc/head.php'); ?>
 
 <body>
-    <?php require('inc/sidebar.html'); ?>
+    <?php require('inc/sidebar.php'); ?>
     <div id="wrapper" data-id="<?php echo $a['anime_id'] ?>" data-page="watch">
         <?php require('inc/header.php') ?>
         <div class="clearfix"></div>

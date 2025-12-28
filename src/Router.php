@@ -38,6 +38,8 @@ class Router
                     fn($key) => !is_numeric($key),
                     ARRAY_FILTER_USE_KEY
                 );
+                require_once __DIR__ . "/../src/Api.php";
+                $api = new Api();
                 require __DIR__ . '/../views/' . $view;
                 return;
             }

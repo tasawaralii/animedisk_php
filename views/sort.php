@@ -14,6 +14,10 @@ $page = array(
     'header-class' => 'header-home',
 );
 require __DIR__ . '/_bootstrap.php';
+
+require_once __DIR__ . "/../src/Api.php";
+$api = new Api();
+
 $limit = 22;
 $currentPage = (isset($_GET['page'])) ? $_GET['page'] : 1;
 $offset = ($currentPage - 1) * $limit;
@@ -23,31 +27,31 @@ $filter = $params['order'];
 
 if ($filter == "movie") {
 
-    $animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=new&type=movie&limit=22&count=true&offset=$offset&key=deadtoonszylith");
+    $animes = $api->getList(['sort' => 'new', 'type' => 'movie', 'limit' => 22, 'count' => "true", 'offset' => $offset]);
 
 } else if ($filter == "recently-updated") {
 
-    $animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=new&type=tv&limit=22&count=true&key=deadtoonszylith");
+    $animes = $api->getList(['sort' => 'new', 'type' => 'tv', 'limit' => 22, 'count' => "true", 'offset' => $offset]);
 
 } else if ($filter == "top-airing") {
 
-    $animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=popular&type=tv&completed=false&limit=22&count=true&key=deadtoonszylith");
+    $animes = $api->getList(['sort' => 'popular', 'type' => 'tv', 'completed' => false, 'limit' => 22, 'count' => "true", 'offset' => $offset]);
 
 } else if ($filter == "most-popular") {
 
-    $animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=popular&limit=22&count=true&key=deadtoonszylith");
+    $animes = $api->getList(['sort' => 'popular', 'limit' => 22, 'count' => "true", 'offset' => $offset]);
 
 } else if ($filter == "completed") {
 
-    $animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=new&type=tv&completed=true&limit=22&count=true&key=deadtoonszylith");
+    $animes = $api->getList(['sort' => 'new', 'type' => 'tv', 'completed' => true, 'limit' => 22, 'count' => "true", 'offset' => $offset]);
 
 } else if ($filter == "tv") {
 
-    $animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=new&type=tv&limit=22&count=true&key=deadtoonszylith");
+    $animes = $api->getList(['sort' => 'new', 'type' => 'tv', 'limit' => 22, 'count' => "true", 'offset' => $offset]);
 
 } else {
 
-    $animes = fetchRemoteData(API_DOMAIN . "/api/anime/listanime.php?sort=new&limit=22&count=true&key=deadtoonszylith");
+    $animes = $api->getList(['sort' => 'new', 'limit' => 22, 'count' => "true", 'offset' => $offset]);
 
 }
 
@@ -57,7 +61,7 @@ if ($filter == "movie") {
 <?php require('inc/head.php') ?>
 
 <body>
-    <?php require('inc/sidebar.html') ?>
+    <?php require('inc/sidebar.php') ?>
 
     <div id="wrapper">
         <?php require('inc/header.php') ?>
