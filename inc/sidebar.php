@@ -21,7 +21,7 @@ $allgenres = $api->getAllGenres();
 
                     <?php
                     foreach ($allgenres as $g) {
-                        echo '<li class="nav-item"><a class="nav-link" href="/genre/' . $g['slug'] . '"> ' . $g['slug'] . '</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link" href="/genre/' . $g['slug'] . '"> ' . $g['name'] . '</a></li>';
                     }
                     ?>
 
