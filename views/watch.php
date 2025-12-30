@@ -68,7 +68,7 @@ if (!isset($_GET['type'])) {
 
         $episode = $api->getEpisodeByUrl($episodeApiUrl);
 
-        if(isset($episode['error'])) {
+        if (isset($episode['error'])) {
             $errorMessage = $episode['error'];
             require('error.php');
             exit;
@@ -155,7 +155,7 @@ $page = array(
                                         <!--</div>-->
                                         <iframe id="iframe-embed" src="" frameborder="0"
                                             allow="autoplay; fullscreen; geolocation; display-capture; picture-in-picture"
-                                            webkitallowfullscreen mozallowfullscreen></iframe>
+                                            allowfullscreen webkitallowfullscreen mozallowfullscreen></iframe>
                                     </div>
                                     <div class="player-controls" style="padding:5px;text-align: center;">
                                         <span style="color: #ffbade;font-weight: bold;">
@@ -213,7 +213,7 @@ $page = array(
                                                     $deaddrive = $servers['deaddrive']['embed'];
 
 
-                                                    if($epInfo['player_link']) {
+                                                    if ($epInfo['player_link']) {
                                                         $blazePlayer = $epInfo['player_link'];
                                                         echo '<div class="item" data-embed="' . $blazePlayer . '"><a style = "margin-top:4px" class="btn">Blaze</a></div>';
                                                     }
