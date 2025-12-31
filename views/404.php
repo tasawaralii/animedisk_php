@@ -5,13 +5,6 @@ $page = array(
     'title' => $data['name']." Free Anime Streaming Homepage",
     'description' => "Watch your favorite anime online in Dub or Sub format without registration on ".$data['domain']." fastest Streaming server NOW.",
     'keywords' => "watch anime online, anime site, free anime, anime to watch, online anime, anime streaming, stream anime online, english anime, english dubbed anime",
-    'css' => array(
-        'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css',
-        'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css',
-        'https://use.fontawesome.com/releases/v5.3.1/css/all.css',
-        'https://fonts.googleapis.com/icon?family=Material+Icons',
-        '/css/styles.min.css?v=1.0'
-    ),
     'header-class' => 'header-home',
 );
 ?>
@@ -36,23 +29,5 @@ $page = array(
         </div>
     </div>
 </div>
-
-    
-<script>
-    if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function () {
-            navigator.serviceWorker.register('/sw.js?v=0.5');
-        });
-    }
-    $('.anime-request-link').click(function (e) {
-        e.preventDefault();
-        if (isLoggedIn) {
-            window.location.href = $(this).attr('href');
-        } else {
-            $('#modallogin').modal('show');
-        }
-    });
-</script>
-
 </body>
 </html>

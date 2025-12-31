@@ -24,14 +24,6 @@
     <link rel="icon" sizes="512x512" href="/public/icons-512.png">
     <link rel="manifest" href="/public/site.webmanifest">
 
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-R34F2GCSBW');
-    </script>
-
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -45,11 +37,16 @@
         }
     </script>
 
-    <?php
+    <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css'>
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.3.1/css/all.css'>
+    <?= isset($isHomePage) ? "<link rel='stylesheet' href='/css/home.css'>" : "" ?>
+    <link rel='stylesheet' href='/css/styles.min.css'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css'>
 
-    foreach ($page['css'] as $css) {
-        echo "<link rel='stylesheet' href='{$css}'>\n";
-    }
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/swiper@6.8.4/swiper-bundle.min.js"></script>
+    <script type="text/javascript" src="/js/new.js"></script>
 
-    ?>
 </head>

@@ -4,12 +4,6 @@ $page = array(
     'title' => 'Error',
     'description' => 'An error occurred while processing your request.',
     'keywords' => 'error, not found',
-    'css' => array(
-        'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css',
-        'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css',
-        'https://use.fontawesome.com/releases/v5.3.1/css/all.css',
-        '/css/styles.min.css?v=1.0',
-    ),
     'header-class' => '',
 );
 ?>

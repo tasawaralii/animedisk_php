@@ -5,13 +5,9 @@ $page = array(
     'title' => $data['name'] . " - Watch Animes in Hindi Online",
     'description' => $data['name'] . " is a Free Hindi anime streaming website which you can watch Hindi Dubbed Anime online with No Account and Daily update. WATCH NOW!",
     'keywords' => "anime to watch, watch anime in Hindi,Hindi anime online, free anime online, anime in hindi dubbed download, anime in hindi watch, stream anime online, hindi anime, hindi dubbed anime",
-    'css' => array(
-        'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css',
-        'https://use.fontawesome.com/releases/v5.3.1/css/all.css',
-        '/css/home.css?v=0.9',
-    )
 );
 
+$isHomePage = true;
 $keywords = keywords();
 
 ?>
@@ -196,17 +192,9 @@ $keywords = keywords();
         </div>
         <!--End: Footer-->
     </div>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script type="text/javascript"
-        src="https://platform-api.sharethis.com/js/sharethis.js#property=64a3d891df473b0019d1b0da&product=inline-share-buttons&source=platform"
-        async="async"></script>
+
     <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function () {
-                navigator.serviceWorker.register('/sw.js?v=0.5');
-            });
-        }
+
         $(document).ready(function () {
             $("#xheader_browser").click(function (e) {
                 $("#xheader_menu, #xheader_browser").toggleClass("active");

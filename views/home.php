@@ -9,13 +9,6 @@ $page = array(
     'title' => $data['name'] . " Free Anime Streaming Homepage",
     'description' => "Watch your favorite anime online in Dub or Sub format without registration on " . $data['domain'] . " fastest Streaming server NOW.",
     'keywords' => "watch anime online, anime site, free anime, anime to watch, online anime, anime streaming, stream anime online, english anime, english dubbed anime",
-    'css' => array(
-        'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css',
-        'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css',
-        'https://use.fontawesome.com/releases/v5.3.1/css/all.css',
-        'https://fonts.googleapis.com/icon?family=Material+Icons',
-        '/css/styles.min.css?v=1.0'
-    ),
     'header-class' => 'header-home',
 );
 $animes = $api->getLatestEpisodes();
@@ -657,35 +650,6 @@ $weekly = $api->popularWeek();
             </div>
         </div>
     </div>
-
-    <script>var recaptchaSiteKey = '6Lc7dH8pAAAAAIGw-BOEYDAZvcs3afxf6XHaLsQL',
-            recaptchaV2SiteKey = '6LdCdH8pAAAAAMV9Qy_K16Fvm4pWGYWrAEpjRjgD';</script>
-    <script
-        src="https://www.google.com/recaptcha/api.js?render=6Lc7dH8pAAAAAIGw-BOEYDAZvcs3afxf6XHaLsQL&hl=en"></script>
-
-    <script type="text/javascript"
-        src="https://platform-api.sharethis.com/js/sharethis.js#property=64a3d891df473b0019d1b0da&product=inline-share-buttons&source=platform"
-        async="async"></script>
-    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"
-        integrity="sha384-/KNQL8Nu5gCHLqwqfQjA689Hhoqgi2S84SNUxC3roTe4EhJ9AfLkp8QiQcU8AMzI"
-        crossorigin="anonymous"></script>
-    <script type="text/javascript" src="/js/app.min.js?v=1.4"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', function () {
-                navigator.serviceWorker.register('/sw.js?v=0.5');
-            });
-        }
-        $('.anime-request-link').click(function (e) {
-            e.preventDefault();
-            if (isLoggedIn) {
-                window.location.href = $(this).attr('href');
-            } else {
-                $('#modallogin').modal('show');
-            }
-        });
-    </script>
-
 </body>
 
 </html>
